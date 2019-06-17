@@ -11,8 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch (url)
     .then(resp => resp.json())
     .then(data => data.forEach(user => {
-      displayRow(user)}))
-  })
+      displayRow(user)
+    }))
+})
   ​
   function displayRow(row){
     const table = document.querySelector("#users-table")
