@@ -7,7 +7,34 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create("Jon")
+User.create(name: "Jon")
+User.create(name: "Caroline")
+User.create(name: "Lola")
+User.create(name: "Jim")
+User.create(name: "Tom")
+
+Post.create(title: "Liverpool is great!", content: "I went to Anfield and loved watching the match this weekend! So much fun!", media: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRoo8Y_jJongdcvwCiPeXMqEbkRCGMoftM9SbVbu38lhnVy7inhFiqN4zpBNeBhB3eaCjhkh00R_P6sjnV040Qfw02_gRfwYI-TjASqlsED8fPX1rkccjmCkQ&usqp=CAc", user_id: 1)
+Post.create(title: "Liverpool wins again!", content: "What what what what what", media: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRoo8Y_jJongdcvwCiPeXMqEbkRCGMoftM9SbVbu38lhnVy7inhFiqN4zpBNeBhB3eaCjhkh00R_P6sjnV040Qfw02_gRfwYI-TjASqlsED8fPX1rkccjmCkQ&usqp=CAc", user_id: 2)
+Post.create(title: "Everton is not so good...", content: "I went to Anfield and loved watching the match this weekend! So much fun!", media: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6X2JoB9pHzO5bL8QNHL7v9nW_IJdQrQOzdVK-GLtLwF5Fxour", user_id: 3)
+Post.create(title: "Liverpool are champions of Europe!", content: "We won the Champions League for our sixth champions cup! What a season!", media: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6X2JoB9pHzO5bL8QNHL7v9nW_IJdQrQOzdVK-GLtLwF5Fxour", user_id: 4)
+Post.create(title: "Liverpool wins again!", content: "What what what what what", media: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRoo8Y_jJongdcvwCiPeXMqEbkRCGMoftM9SbVbu38lhnVy7inhFiqN4zpBNeBhB3eaCjhkh00R_P6sjnV040Qfw02_gRfwYI-TjASqlsED8fPX1rkccjmCkQ&usqp=CAc", user_id: 2)
+
+Comment.create(text: "I love to watch Liverpool too!", user_id: 1, post_id: 2)
+Comment.create(text: "Great team", user_id: 2, post_id: 1)
+Comment.create(text: "Awwwww yeahhhhhh!", user_id: 3, post_id: 2)
+Comment.create(text: "Meow", user_id: 4, post_id: 3)
+Comment.create(text: "I love to watch Liverpool too!", user_id: 1, post_id: 3)
+
+Like.create(user_id: 1, post_id: 2)
+Like.create(user_id: 1, post_id: 3)
+Like.create(user_id: 1, post_id: 4)
+Like.create(user_id: 2, post_id: 1)
+Like.create(user_id: 2, post_id: 3)
+Like.create(user_id: 2, post_id: 4)
+Like.create(user_id: 4, post_id: 1)
+
+
+# Board.create(name: "Matt", size: 2, surfer_id: 1)
 
 # create_table "comments", force: :cascade do |t|
 #     t.string "text"

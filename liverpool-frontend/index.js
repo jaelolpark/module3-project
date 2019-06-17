@@ -17,9 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function displayRow(row){
     const table = document.querySelector("#users-table")
     table.innerHTML +=
-    `
-    <tr>
+    `<tr>
       <td>${row.name}</td>
-    </tr>
-    `
+    </tr>`
 }
