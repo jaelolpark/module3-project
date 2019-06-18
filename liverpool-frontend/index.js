@@ -23,20 +23,16 @@ function fetchPosts() {
 }
 
 function displayPost(post) {
-  const comments = document.getElementById("comments")
-  comments.innerHTML += 
-    `<div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">${post.title}</h5>
-        <p class="card-text">${post.content}</p>
-        <a href="#" class="btn btn-primary">View Post Details!</a>
+  const postList = document.getElementById("post-list")
+  postList.innerHTML += 
+    `<div style="background-color:black;color:white;padding:20px;">
+      <h2>${post.title}</h2>
+      <p>${post.content}</p>
     </div>`
 }
 
 function displayUser(user){
   const table = document.querySelector("#users-table")
   table.innerHTML +=
-  `<tr>                                                                               
-    <td>${user.name}</td>
-  </tr>` 
+    `<li>${user.name}</li>`
 }
