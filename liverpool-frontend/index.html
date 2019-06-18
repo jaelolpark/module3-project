@@ -1,4 +1,5 @@
 <html>
+
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +8,26 @@
     <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./stylesheet/index.css">
-
     <title>Welcome To Our Liverpool Forum!</title>
-
   </head>
-  <body class='container center'>
+
+  <body>
+    <!-- Banner -->
+    <div>
+      <header class="main-header" role="banner">
+          <img src="http://i.imgur.com/vDntWaa.png" alt="Banner Image"/>
+      </header>
+    </div>
+
     <h1>Liverpool FC Forum</h1>
 
     <!-- Open Users Modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#users-table">
       Liverpool Fans
     </button>
 
     <!-- Users Modal -->
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal fade" id="users-table" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -37,15 +44,13 @@
         </div>
       </div>
     </div>
-      <ul id="users-table">
-      </ul>
-    <div>
-      <form id="post_form">
-        <input id="post_input" type="text" name="title" placeholder="Title Your Post"/>
-        <input id="post_input" type="text" name="content" placeholder="Your Post"/>
-        <input id="post_input" type="text" name="media" placeholder="Image? Meme?"/>
-        <input id="post_submit_button" type="submit" value="Submit"/>
-      </form>
+    <div><br>
+        <form id="post_form">
+          <input id="post_input" type="text" name="title" placeholder="Title Your Post"/>
+          <input id="post_input" type="text" name="content" placeholder="Your Post"/>
+          <input id="post_input" type="text" name="media" placeholder="Image? Meme?"/>
+          <input id="post_submit_button" type="submit" value="Submit"/>
+        </form>
     </div>
     <div>
       <ul id="post-list">
