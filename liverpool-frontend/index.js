@@ -1,12 +1,16 @@
+// GLOBAL VARIABLES
 const usersUrl = "http://localhost:3000/users"
 const postsUrl = "http://localhost:3000/posts"
 const commentsUrl = "http://localhost:3000/comments"
+const likesUrl = "http://localhost:3000/likes"
 let user_id = 0
+let post_id = 0
+
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM content has loaded")
-  fetchUsers()
   fetchPosts()
+  fetchUsers()
   const postForm = document.getElementById("post_form")
   postForm.addEventListener("submit", createPost)
 
@@ -66,9 +70,32 @@ function createPost(e) {
     },
     body: JSON.stringify(postInput)
   }).then(res => res.json())
-  .then(console.log(postInput))
-  .then(displayPost(postInput))
+  .then(res => {
+    post_id = res.id
+    (displayPost(res))
+  })
+  .then(console.log(res))
 }
+
+// SETUP COMMENTS IN HTML
+// function createComment(e) {
+//   e.preventDefault()
+//   let commentInput = {
+//     text: e.target.text.value,
+//     user_id: user_id,
+//     post_id: post_id
+//   }
+//   fetch(commentsUrl, {
+//     method: "POST",
+//     headers: {
+//       "Accept": "application/json",
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(commentInput)
+//   }).then(res => res.json())
+//   .then(res => {(displayComment(res))
+//   })
+// }
 
 function displayPost(post) {
   const postList = document.getElementById("post-list")
