@@ -13,6 +13,4 @@ document.addEventListener("DOMContentLoaded", () => {
       <td>${row.name}</td>
     </tr>` 
   }
-
-
 })
