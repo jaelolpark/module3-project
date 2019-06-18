@@ -6,9 +6,21 @@
     <script src="index.js"></script>
     <title>Welcome To Our Liverpool Forum!</title>
   </head>
-  <body>
+  <body class='container center'>
     <h1>Liverpool Users</h1>
-      <table id="users-table">
+    <div>
+      <form id="post_form">
+        <input id="post_input" type="text" name="post" placeholder="Leave your thinking.."/>
+        <input id="post_submit_button" type="submit" value="Submit"/>
+      </form>
+    </div>
+    <div>
+      <ul id="post-list">
+        <!-- <li> for each post goes here -->
+      </ul>
+    </div>
+
+      <!-- <table id="users-table">
         <tr>
           <th>Name</th>
         </tr>
@@ -23,16 +35,12 @@
               <span id="likes">Likes Go Here</span>
             </span>
             <button id="like_button">Like</button>
-            <form id="comment_form">
-              <input id="comment_input" type="text" name="comment" placeholder="Add Comment"/>
-              <input type="submit" value="Submit"/>
-            </form>
             <ul id="comments">
-                  <!-- <li> for each comment goes here -->
+                  
             </ul>
           </div>
         <div class="post-card"></div>
       </div>
-    </div>
+    </div> -->
   </body>
 </html>
