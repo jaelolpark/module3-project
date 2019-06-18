@@ -1,12 +1,17 @@
 const usersUrl = "http://localhost:3000/users"
 const postsUrl = "http://localhost:3000/posts"
 const commentsUrl = "http://localhost:3000/comments"
+let user_id = 0
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM content has loaded")
   fetchUsers()
   fetchPosts()
-  
+  const postForm = document.getElementById("post_form")
+  postForm.addEventListener("submit", createPost)
+
+  const userForm = document.getElementById("userForm")
+  userForm.addEventListener("submit", createUser)
 })
 
 function fetchUsers() {
@@ -21,6 +26,48 @@ function fetchPosts() {
   .then(resp => resp.json())
   .then(data => data.forEach(post => {displayPost(post)
   }))
+}
+
+// WORKING
+function createUser(e) {
+  e.preventDefault()
+  let user = {name: e.target.name.value}
+  fetch(usersUrl, {
+    method: "POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+  }, 
+    body: JSON.stringify(user)
+  }).then(res => res.json())
+  .then(e.target.reset())
+  .then(res => {
+    console.log("This is my user: ", res)
+    user_id = res.id
+    console.log("This is the user_id: ", user_id)
+    displayUser(res)
+  })
+}
+
+// WORKING BUT NEED LOGIN FIRST
+function createPost(e) {
+  e.preventDefault()
+  let postInput = {
+    title: e.target.title.value,
+    content: e.target.content.value,
+    media: e.target.media.value,
+    user_id: user_id
+  }
+  fetch(postsUrl, {
+    method: "POST",
+    headers: {
+      "Accept": "application/json",
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(postInput)
+  }).then(res => res.json())
+  .then(console.log(postInput))
+  .then(displayPost(postInput))
 }
 
 function displayPost(post) {

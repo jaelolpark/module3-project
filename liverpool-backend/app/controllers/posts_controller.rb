@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    # byebug
     @post = Post.new(post_params)
     if @post.save
       render json: @post, status: :created
@@ -20,7 +21,7 @@ class PostsController < ApplicationController
 
   private 
   def post_params
-    params.permit(:title, :content, :media)
+    params.require(:post).permit(:title, :content, :media, :user_id)
   end
 end
 

@@ -20,7 +20,6 @@ class UsersController < ApplicationController
 
   private 
   def user_params
-    params.permit(:title, :content, :media)
+    params.permit(:name)
   end
-end
 end
