@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM content has loaded")
   fetchUsers()
   fetchPosts()
+  
 })
 
 function fetchUsers() {
@@ -25,14 +26,14 @@ function fetchPosts() {
 function displayPost(post) {
   const postList = document.getElementById("post-list")
   postList.innerHTML += 
-    `<div style="background-color:black;color:white;padding:20px;">
+    `<div>
       <h2>${post.title}</h2>
       <p>${post.content}</p>
     </div>`
 }
-
+// Display Users in a modal when clicked on
 function displayUser(user){
-  const table = document.querySelector("#users-table")
-  table.innerHTML +=
+  const modalBody = document.querySelector(".modal-body")
+  modalBody.innerHTML +=
     `<li>${user.name}</li>`
 }
