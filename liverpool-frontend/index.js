@@ -72,6 +72,7 @@ function createUser(e) {
     console.log("This is the user_id: ", user_id)
     displayUser(res)
   })
+  
 }
 
 // WORKING BUT NEED LOGIN FIRST
