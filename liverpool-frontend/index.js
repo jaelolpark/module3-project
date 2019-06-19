@@ -76,7 +76,6 @@ function createUser(e) {
   .then(res => displayUser(res))
   userForm.reset()
 }
-
 // NOT WORKING BUT NEED LOGIN FIRST
 function createPost(e) {
   let postInput = {
