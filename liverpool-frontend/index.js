@@ -32,6 +32,7 @@ function fetchPosts() {
   }))
 }
 
+
 // WORKING
 function createUser(e) {
   e.preventDefault()
