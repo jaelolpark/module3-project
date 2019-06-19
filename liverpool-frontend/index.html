@@ -12,11 +12,10 @@
   </head>
 
   <body>
-
     <!-- Banner -->
     <div>
       <header class="main-header" role="banner">
-          <img src="http://i.imgur.com/vDntWaa.png" alt="Banner Image"/>
+          <img id="banner" src="http://i.imgur.com/vDntWaa.png" alt="Banner Image"/>
       </header>
     </div>
 
@@ -47,20 +46,15 @@
     </div>
     <div><br>
       <h3>Create User</h3>
-      <!-- <ul class="new-user-errors">
-          <% @user.errors.full_messages.each do |error| %>
-            <li><%= error %></li>
-          <% end %>
-        </ul> -->
         <form id="userForm">
             <input type="text" name="name" id="userName" placeholder="Name">
             <input id="userSubmit"type="submit" value="Submit">
         </form>
       <h3>New Post</h3>
         <form id="post_form">
-          <input id="title_input" type="text" name="title" placeholder="Title Your Post"/>
-          <input id="content_input" type="text" name="content" placeholder="Your Post"/>
-          <input id="media_input" type="text" name="media" placeholder="Image? Meme?"/>
+          <input id="post_input" type="text" name="title" placeholder="Title Your Post"/>
+          <input id="post_input" type="text" name="content" placeholder="Your Post"/>
+          <input id="post_input" type="text" name="media" placeholder="Image? Meme?"/>
           <input id="post_submit_button" type="submit" value="Submit"/>
         </form>
     </div>
