@@ -88,17 +88,6 @@ function displayPost(post) {
     .then(likes => likes.forEach(like => {
       if (post.id === like.post_id) postLikes++
 
-    
-    
-        const like_btn = document.createElement("button")
-        like_btn.id = post.id
-        like_btn.className = 'btn btn-primary'
-        like_btn.innerHTML = `<span>Likes: <span>${postLikes}</span></span>`
-        
-        like_btn.addEventListener("click", postlike)
-    }))
-  
-
   const postList = document.getElementById("post-list")
   // postList.innerHTML += 
   //   `<div id=${post.id} class="posts">
@@ -133,11 +122,17 @@ function displayPost(post) {
     postButton.dataset.target = "#post-modal"
     postButton.innerText = "Post Details"
 
-    divPost.append(h2, p, author, postButton)
+    const like_btn = document.createElement("button")
+    like_btn.id = post.id
+    like_btn.className = 'btn btn-primary'
+    like_btn.innerHTML = `<span>Likes: <span>${postLikes}</span></span>`
+
+    divPost.append(h2, p, author, postButton, like_btn)
     postList.append(divPost)
     
     postButton.addEventListener("click", postDetailsModal)
-
+    like_btn.addEventListener("click", postlike)
+  }))
 }
 
 // POST LIKE
