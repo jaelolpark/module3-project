@@ -3,7 +3,7 @@ const usersUrl = "http://localhost:3000/users"
 const postsUrl = "http://localhost:3000/posts"
 const commentsUrl = "http://localhost:3000/comments"
 const likesUrl = "http://localhost:3000/likes"
-let user_id = 0
+let user_id = null
 let post_id = 0
 
 
@@ -32,7 +32,6 @@ function fetchPosts() {
   }))
 }
 
-
 // WORKING
 function createUser(e) {
   e.preventDefault()
@@ -54,49 +53,55 @@ function createUser(e) {
   })
 }
 
-// WORKING BUT NEED LOGIN FIRST
-function createPost(e) {
+// WORKING
+function createUser(e) {
   e.preventDefault()
-  let postInput = {
-    title: e.target.title.value,
-    content: e.target.content.value,
-    media: e.target.media.value,
-    user_id: user_id
-  }
-  fetch(postsUrl, {
+  let user = {name: e.target.name.value}
+  fetch(usersUrl, {
     method: "POST",
     headers: {
       "Accept": "application/json",
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(postInput)
+      "Content-Type": "application/json"
+  }, 
+    body: JSON.stringify(user)
   }).then(res => res.json())
+  .then(e.target.reset())
   .then(res => {
-    post_id = res.id
-    (displayPost(res))
+    console.log("This is my user: ", res)
+    user_id = res.id
+    console.log("This is the user_id: ", user_id)
+    displayUser(res)
   })
-  .then(console.log(res))
+  
 }
 
-// SETUP COMMENTS IN HTML
-// function createComment(e) {
-//   e.preventDefault()
-//   let commentInput = {
-//     text: e.target.text.value,
-//     user_id: user_id,
-//     post_id: post_id
-//   }
-//   fetch(commentsUrl, {
-//     method: "POST",
-//     headers: {
-//       "Accept": "application/json",
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(commentInput)
-//   }).then(res => res.json())
-//   .then(res => {(displayComment(res))
-//   })
-// }
+// WORKING BUT NEED LOGIN FIRST
+function createPost(e) {
+  e.preventDefault()
+  
+  if(user_id === null) {
+    alert('You have to be logged in to post!')
+  }
+  else {
+    let postInput = {
+      title: e.target.title.value,
+      content: e.target.content.value,
+      media: e.target.media.value,
+      user_id: user_id
+    }
+    fetch(postsUrl, {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(postInput)
+    }).then(res => res.json())
+    .then(console.log(postInput))
+    .then(displayPost(postInput))
+  }
+  document.getElementById("post_form").reset()
+}
 
 function displayPost(post) {
   const postList = document.getElementById("post-list")
