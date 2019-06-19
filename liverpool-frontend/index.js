@@ -104,44 +104,84 @@ function createPost(e) {
 }
 
 function displayPost(post) {
-  const postList = document.getElementById("post-list")
-  // postList.innerHTML += 
-  //   `<div id=${post.id} class="posts">
-  //     <h2>${post.title}</h2>
-  //     <p>${post.content}</p>
-  //     <button id="btn-detail" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-  //       Post Details
-  //     </button>
-  //   </div><br><br>`
-
-    const divPost = document.createElement("div")
-    divPost.id = post.id
-    divPost.className = "posts"
-
-    const h2 = document.createElement("h2")
-    h2.innerText = post.title
-
-    const p = document.createElement("p")
-    p.innerText = post.content 
-
-    const postButton = document.createElement("button")
-    postButton.id = post.id
-    postButton.className = "btn btn-danger"
-    postButton.dataset.target = "#exampleModal"
-    postButton.innerText = "Post Details"
-
-    divPost.append(h2, p, postButton)
-    postList.append(divPost)
-    postButton.addEventListener("click", postDetailsModal)
+  // const postId = post.id
+  let postLikes = 0
+  fetch(likesUrl)
+    .then(res => res.json())
+    .then(likes => likes.forEach(like => {
+      if (post.id === like.post_id) postLikes++
+      const postList = document.getElementById("post-list")
+      // postList.innerHTML += 
+      //   `<div id=${post.id} class="posts">
+      //     <h2>${post.title}</h2>
+      //     <p>${post.content}</p>
+      //     <button id="btn-detail" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+      //       Post Details
+      //     </button>
+      //   </div><br><br>`
+    
+        const divPost = document.createElement("div")
+        divPost.id = post.id
+        divPost.className = "posts"
+    
+        const h2 = document.createElement("h2")
+        h2.innerText = post.title
+    
+        const p = document.createElement("p")
+        p.innerText = post.content 
+    
+        const postButton = document.createElement("button")
+        postButton.id = post.id
+        postButton.className = "btn btn-danger"
+        postButton.dataset.target = "#exampleModal"
+        postButton.innerText = "Post Details"
+    
+        const like_btn = document.createElement("button")
+        like_btn.id = post.id
+        like_btn.className = 'btn btn-primary'
+        like_btn.innerHTML = `<span>Likes: <span>${postLikes}</span></span>`
+        
+        divPost.append(h2, p, postButton, like_btn)
+        postList.append(divPost)
+        postButton.addEventListener("click", postDetailsModal)
+        like_btn.addEventListener("click", postlike)
+    }))
   
+}
+
+// POST LIKE
+function postlike(e) {
+  console.log(e.target.post_id)
+  let like_span = e.target
+  like_span.innerText = parseInt(like_span.innerText)+1
+console.log(like_span.innerText)
+    
+    fetch(likesUrl, {
+      method: 'POST',
+      headers: {'Accept': 'application/json',
+      'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        post_id: postId,
+        user_id: userId
+      })
+    })
 }
 
 // POST DETAILS MODAL
 function postDetailsModal(e) {
-
-
+console.log(e.target)
+post_id = e.target.id
+  fetch(`http://localhost:3000/posts/${post_id}`)
+  .then(resp => resp.json())
+  .then(json => displayPostModal)
 }
 
+
+function displayPostModal(post) {
+  const postModal = document.getElementById('post-modal')
+
+  postModal.innerHTML += `${post.title}`
+}
 
 
 // Display Users in a modal when clicked on
