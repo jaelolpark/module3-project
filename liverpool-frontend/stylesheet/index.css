@@ -5,3 +5,8 @@ h1 {
 #banner {
     width: 100%;
 }
+
+.author-tag {
+    font-size: .8em;
+    color: gray;
+}
