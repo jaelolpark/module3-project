@@ -53,7 +53,7 @@ function createUser(e) {
   })
 }
 
-// WORKING BUT NEED LOGIN FIRST
+// WORKING BUT NEED TO LOGIN FIRST
 function createPost(e) {
   e.preventDefault()
   
@@ -98,15 +98,24 @@ function displayPost(post) {
     h2.innerText = post.title
 
     const p = document.createElement("p")
-    p.innerText = post.content 
+    p.innerText = `"${post.content}"` 
+
+    const author = document.createElement("p")
+    author.className = 'author-tag'
+
+    fetch(usersUrl+'/'+post.user_id)
+    .then(resp => resp.json())
+    .then(user => author.innerText = `by ${user.name}`)
 
     const postButton = document.createElement("button")
     postButton.id = post.id
+    postButton.type = 'button'
     postButton.className = "btn btn-danger"
-    postButton.dataset.target = "#exampleModal"
+    postButton.dataset.toggle = "modal"
+    postButton.dataset.target = "#post-modal"
     postButton.innerText = "Post Details"
 
-    divPost.append(h2, p, postButton)
+    divPost.append(h2, p, author, postButton)
     postList.append(divPost)
     
     postButton.addEventListener("click", postDetailsModal)
@@ -118,32 +127,21 @@ function postDetailsModal(e) {
   post_id = e.target.id
     fetch(`http://localhost:3000/posts/${post_id}`)
     .then(resp => resp.json())
-    .then(console.log)
-    .then(post => displayPostModal(post))
+    .then(displayPostModal)
+
+    // .then(post =>{
+    //   displayPostModal(post)
+    // })
 }
 
 // NOT WORKING YET
 function displayPostModal(post) {
-  console.log(post)
+  // console.log(post)
   const postModal = document.getElementById("post-modal")
-  postModal.innerHTML += 
-      `<div class="modal fade" id="post-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">${post.title.value}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div id=post-details class="modal-body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-    </div>
-    </div>`
+  console.log(post)
+  postModal.querySelector('h5').innerText = post.title
+  postModal.querySelector('#post-details').innerText = post.content
+  postModal.querySelector('#post-details').innerHTML += `<img src=${post.media}>`
 }
 
 // Display Users in a modal when clicked on
