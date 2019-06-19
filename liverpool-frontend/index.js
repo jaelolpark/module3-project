@@ -11,77 +11,56 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM content has loaded")
   fetchPosts()
   fetchUsers()
+  const postForm = document.getElementById("post_form")
+  postForm.addEventListener("submit", createPost)
 
-
-  document.addEventListener('click', handleClickEvents)
-
-  function handleClickEvents(e) {
-		e.preventDefault()
-    // console.log(e.target)
-		if(e.target.id === 'userSubmit') createUser(e.target)
-		else if(e.target.id === 'post_submit_button') createPost(e.target)
-    else if(e.target.id === 'btn btn-primary') add_quote(e.target.parentElement)
-	}
-
-
-
-
-
-  // const postForm = document.getElementById("post_form")
-  // postForm.addEventListener("submit", createPost)
-
-  // const userForm = document.getElementById("userForm")
-  // userForm.addEventListener("submit", createUser)
-
+  const userForm = document.getElementById("userForm")
+  userForm.addEventListener("submit", createUser)
+})
 
 function fetchUsers() {
-  fetch(usersUrl)
+  fetch (usersUrl)
   .then(resp => resp.json())
-  .then(json => {json.forEach(displayUser)})
+  .then(data => data.forEach(user => {displayUser(user)
+  }))
 }
 
 function fetchPosts() {
-  fetch(postsUrl)
+  fetch (postsUrl)
   .then(resp => resp.json())
-  .then(json => {json.forEach(displayPost)})
+  .then(data => data.forEach(post => {displayPost(post)
+  }))
 }
-
-function fetchLikes() {
-  fetch(likesUrl)
-  .then(resp => resp.json())
-  .then(json => {json.forEach(displaylike)})
-}
-
-function fetchComments() {
-  fetch(commentsUrl)
-  .then(resp => resp.json())
-  .then(json => {json.forEach(displaycomment)})
-}
-
 
 
 // WORKING
 function createUser(e) {
-  // console.log(userName.name)
-  let user = {name: userName.value}
+  e.preventDefault()
+  let user = {name: e.target.name.value}
   fetch(usersUrl, {
     method: "POST",
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json"
-     }, 
+  }, 
     body: JSON.stringify(user)
+  }).then(res => res.json())
+  .then(e.target.reset())
+  .then(res => {
+    console.log("This is my user: ", res)
+    user_id = res.id
+    console.log("This is the user_id: ", user_id)
+    displayUser(res)
   })
-  .then(res => res.json())
-  .then(res => displayUser(res))
-  userForm.reset()
 }
-// NOT WORKING BUT NEED LOGIN FIRST
+
+// WORKING BUT NEED LOGIN FIRST
 function createPost(e) {
+  e.preventDefault()
   let postInput = {
-    title: title_input.value,
-    content: content_input.value,
-    media: media_input.value,
+    title: e.target.title.value,
+    content: e.target.content.value,
+    media: e.target.media.value,
     user_id: user_id
   }
   fetch(postsUrl, {
@@ -91,10 +70,12 @@ function createPost(e) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(postInput)
+  }).then(res => res.json())
+  .then(res => {
+    post_id = res.id
+    (displayPost(res))
   })
-  .then(res => res.json())
-  .then(displayPost)
-   post_form.reset()
+  .then(console.log(res))
 }
 
 // SETUP COMMENTS IN HTML
@@ -124,7 +105,6 @@ function displayPost(post) {
       <h2>${post.title}</h2>
       <p>${post.content}</p>
     </div>`
-  // console.log(post)
 }
 // Display Users in a modal when clicked on
 function displayUser(user){
@@ -132,10 +112,3 @@ function displayUser(user){
   modalBody.innerHTML +=
     `<li>${user.name}</li>`
 }
-
-
-
-
-
-
-})
