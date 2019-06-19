@@ -81,6 +81,24 @@ function createPost(e) {
 }
 
 function displayPost(post) {
+  // const postId = post.id
+  let postLikes = 0
+  fetch(likesUrl)
+    .then(res => res.json())
+    .then(likes => likes.forEach(like => {
+      if (post.id === like.post_id) postLikes++
+
+    
+    
+        const like_btn = document.createElement("button")
+        like_btn.id = post.id
+        like_btn.className = 'btn btn-primary'
+        like_btn.innerHTML = `<span>Likes: <span>${postLikes}</span></span>`
+        
+        like_btn.addEventListener("click", postlike)
+    }))
+  
+
   const postList = document.getElementById("post-list")
   // postList.innerHTML += 
   //   `<div id=${post.id} class="posts">
@@ -119,6 +137,25 @@ function displayPost(post) {
     postList.append(divPost)
     
     postButton.addEventListener("click", postDetailsModal)
+
+}
+
+// POST LIKE
+function postlike(e) {
+  console.log(e.target.post_id)
+  let like_span = e.target
+  like_span.innerText = parseInt(like_span.innerText)+1
+console.log(like_span.innerText)
+    
+    fetch(likesUrl, {
+      method: 'POST',
+      headers: {'Accept': 'application/json',
+      'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        post_id: postId,
+        user_id: userId
+      })
+    })
 }
 
 // POST DETAILS MODAL
@@ -143,6 +180,7 @@ function displayPostModal(post) {
   postModal.querySelector('#post-details').innerText = post.content
   postModal.querySelector('#post-details').innerHTML += `<img src=${post.media}>`
 }
+
 
 // Display Users in a modal when clicked on
 function displayUser(user){
