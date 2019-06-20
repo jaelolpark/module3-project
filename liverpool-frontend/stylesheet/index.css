@@ -1,5 +1,7 @@
 h1 {
     color: red;
+    padding: 10px; 
+    margin: 10px;
 }
 
 #banner {
@@ -10,3 +12,14 @@ h1 {
     font-size: .8em;
     color: gray;
 }
+
+.posts {
+    background-color: rgb(185, 181, 181);
+    opacity: 10%;
+    border: solid;
+    border-color: black;
+    border-radius: 20px;
+    padding: 10px; 
+    margin: 10px;
+}
+
