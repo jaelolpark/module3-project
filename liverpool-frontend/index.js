@@ -6,7 +6,7 @@ const likesUrl = "http://localhost:3000/likes"
 let user_id = null
 let post_id = null
 
-
+// DOM, Fetch Method Calls, and Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM content has loaded")
   fetchPosts()
@@ -124,9 +124,7 @@ function displayPost(post) {
       headers: {"Accept": "application/json",
       'Content-Type': 'application/json'},
       body: JSON.stringify({user_id: post.user_id, post_id: post.id})
-    })
-    console.log(like_span.innerText)
-    
+    })    
   })
   divPost.append(h2, p, author, postButton, like_btn)
   postList.append(divPost)
@@ -145,16 +143,16 @@ function postDetailsModal(e) {
 
 //WORKING BUT NEEDS DESIGN/CSS
 function displayPostModal(post) {
-  // console.log(post)
   const postModal = document.getElementById("post-modal")
-  console.log(post)
   postModal.querySelector('h5').innerText = post.title
   postModal.querySelector('#post-details').innerText = post.content
   postModal.querySelector('#post-details').innerHTML += `<img src=${post.media}>`
+  console.log(postModal)
 }
 
 // Display Users in a modal when clicked on
 function displayUser(user){
+  console.log(user)
   const modalBody = document.getElementById("userModal")
   modalBody.innerHTML +=
     `<li>${user.name}</li>`   
