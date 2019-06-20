@@ -19,14 +19,24 @@ class PostsController < ApplicationController
     end
   end
 
+  # def destroy
+  #   @post = Post.find(params[:id])
+  #   @post.destroy
+  #   render json: @post, status: :ok
+  # end 
+
+  def destroy
+    @post = Post.find(params[:id])
+    unless @post.nil?
+      @post.destroy
+      render json: @post
+    else
+      render json: { error: "Post not Found!" }, status: 404
+    end
+  end
+
   private 
   def post_params
     params.require(:post).permit(:title, :content, :media, :user_id)
   end
 end
-
-  ## Example: Get a user and their animals
-  ## def show (in a users controller)
-  ##   @user = User.find(params[:id])
-  ##   render json: @user.profile_json, status: :ok
-  ## end
