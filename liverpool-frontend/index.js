@@ -160,7 +160,25 @@ function displayPostModal(post) {
     postCommentLi.innerText = comment.text
     postCommentsUl.append(postCommentLi)
   })
-  // postModal.querySelector("#post-comments").innerHTML += post.comments.map(comment.text => `<li>${comment.text}</li>`)
+  const commentForm = document.getElementById("comment-form")
+  commentForm.addEventListener("submit", (e) => {
+    e.preventDefault()
+    if(post.user_id === null) {
+        alert('You must be logged in to comment!')
+    } 
+    else {
+      let postCommentLi = document.createElement("li")
+      postCommentLi.innerText = e.target.text.value
+      postCommentsUl.append(postCommentLi)
+      fetch(commentsUrl, {
+        method: "POST", 
+        headers: {"Accept": "application/json",
+        'Content-Type': 'application/json'},
+        body: JSON.stringify({text: e.target.text.value, user_id: post.user_id, post_id: post.id})
+      }).then(res => res.json())
+      .then(e.target.reset())
+    }
+  })
 }
 
 // Display Users in a modal when clicked on
