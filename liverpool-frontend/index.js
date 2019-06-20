@@ -150,7 +150,6 @@ function postDetailsModal(e) {
 function displayPostModal(post) {
   console.log(post)
   const postModal = document.getElementById("post-modal")
-  postModal.querySelector('#post-details').innerHTML += `<img src=${post.media}>`
   postModal.querySelector('h5').innerText = post.title
   postModal.querySelector('#post-content').innerText = post.content
   postModal.querySelector('#post-media').innerHTML = `<img src=${post.media}>`

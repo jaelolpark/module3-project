@@ -142,6 +142,8 @@ h1 {
 }
 
 body {
-    background-image: url(https://wallpapercave.com/wp/wp1889539.jpg);
-    
+    background: url(https://wallpapercave.com/wp/wp1889539.jpg) no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: visible;
 }
