@@ -132,7 +132,7 @@ function displayPost(post) {
       body: JSON.stringify({user_id: post.user_id, post_id: post.id})
     })    
   })
-  divPost.append(h2, p, author, postButton, like_btn)
+  divPost.append(h2, author, p, postButton, like_btn)
   postList.append(divPost)
   
   postButton.addEventListener("click", postDetailsModal)
