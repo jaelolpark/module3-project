@@ -7,6 +7,20 @@ h1 {
     margin: 10px;
 }
 
+h2 {
+    font-size: 45px;
+    color: black;    
+    padding: 10px; 
+    margin: 10px;
+}
+
+p {
+    font-size: 25px;
+    color: black;    
+    padding: 10px; 
+    margin: 10px;
+}
+
 #banner {
     width: 100%;
 }
@@ -43,7 +57,7 @@ h1 {
 }
 
 .posts {
-    background-color: rgb(185, 181, 181);
+    background-color: rgb(233, 233, 233);
     opacity: 10%;
     border: solid;
     border-color: black;
@@ -51,7 +65,16 @@ h1 {
     padding: 20px; 
     margin: 15px;
     width: 95%;
-    
+}
+
+.posts h2 {
+    display: inline;
+}
+p.author-tag {
+    display: inline;
+    font-size: 2em;
+    color: black;
+    margin-left: 1em;
 }
 
 #userForm {
@@ -62,6 +85,7 @@ h1 {
     border-radius: 20px;
     padding: 5px; 
     width: 32%;
+    height: 20%;
 }
 
 #post_form {
@@ -77,7 +101,7 @@ h1 {
 
 #fans_btn {
     float: right;
-    margin: 6em 11.3em 0 0;
+    margin: 2.35em 11.3em 0 0;
     width: 250px;
     height: 67px;
     border: 3px solid black;
