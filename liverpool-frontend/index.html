@@ -22,7 +22,7 @@
     <h1>Liverpool FC Forum</h1>
 
     <!-- Open Users Modal -->
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#users-table">
+    <button id="fans_btn" type="button" class="btn btn-danger" data-toggle="modal" data-target="#users-table">
       Liverpool Fans
     </button>
 
@@ -44,18 +44,18 @@
         </div>
       </div>
     </div>
-    <div><br>
-      <h3>Create User</h3>
+    <div class="forms"><br>
+      <h3 id=create_user_text>Create User</h3>
         <form id="userForm">
             <input type="text" name="name" id="userName" placeholder="Name">
-            <input id="userSubmit"type="submit" value="Submit">
+            <input class="btn-danger" id="userSubmit"type="submit" value="Submit">
         </form>
-      <h3>New Post</h3>
+      <h3 id=create_post_text>New Post</h3>
         <form id="post_form">
-          <input id="post_input" type="text" name="title" placeholder="Title Your Post"/>
-          <input id="post_input" type="text" name="content" placeholder="Your Post"/>
-          <input id="post_input" type="text" name="media" placeholder="Image? Meme?"/>
-          <input id="post_submit_button" type="submit" value="Submit"/>
+          <input id="post_title" type="text" name="title" placeholder="Title Your Post"/>
+          <input id="post_content" type="text" name="content" placeholder="Your Post"/>
+          <input id="post_media" type="text" name="media" placeholder="Image? Meme?"/>
+          <input class="btn-danger" id="post_submit_button" type="submit" value="Submit"/>
         </form>
     </div>
     <div>

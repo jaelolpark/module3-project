@@ -1,5 +1,6 @@
 h1 {
     color: red;
+    text-align: center;
     padding: 10px; 
     margin: 10px;
 }
@@ -10,7 +11,30 @@ h1 {
 
 .author-tag {
     font-size: .8em;
-    color: gray;
+}
+
+#post_title {
+    border: solid;
+    border-color: black;
+    border-radius: 10px;
+    padding: 10px; 
+    margin: 10px;
+}
+
+#post_content {
+    border: solid;
+    border-color: black;
+    border-radius: 10px;
+    padding: 10px; 
+    margin: 10px;
+}
+
+#post_media {
+    border: solid;
+    border-color: black;
+    border-radius: 10px;
+    padding: 10px; 
+    margin: 10px;
 }
 
 .posts {
@@ -23,3 +47,82 @@ h1 {
     margin: 10px;
 }
 
+#userForm {
+    background-color: rgb(185, 181, 181);
+    opacity: 10%;
+    border: solid;
+    border-color: black;
+    border-radius: 20px;
+    padding: 5px; 
+    margin: 10px;
+    width: 32%;
+}
+
+#post_form {
+    background-color: rgb(185, 181, 181);
+    opacity: 10%;
+    border: solid;
+    border-color: black;
+    border-radius: 20px;
+    padding: 5px; 
+    margin: 10px;
+    width: 82%;
+}
+
+/* #fans_btn {
+    top: 50px;
+    left: 500px;
+} */
+
+#userName {
+    border: solid;
+    border-color: black;
+    border-radius: 10px;
+    padding: 5px; 
+    margin: 3px;
+}
+
+.btn-danger {
+    border-radius: 10px;
+    padding: 5px; 
+    margin: 10px;
+}
+
+#create_user_text {
+    border-radius: 10px;
+    padding: 5px; 
+    margin: 10px;
+}
+
+#create_post_text {
+    border-radius: 10px;
+    padding: 5px; 
+    margin: 10px;
+}
+
+.btn-primary {
+    border-radius: 10px;
+    padding: 5px; 
+    margin: 10px;
+}
+
+#userSubmit {
+    /* border: solid; */
+    /* border-color: black; */
+    border-radius: 10px;
+    padding: 5px; 
+    margin: 10px;
+}
+
+#post_submit_button {
+    border-radius: 10px;
+    padding: 5px; 
+    margin: 10px;
+}
+
+
+
+.forms {
+    padding: 10px; 
+    margin: 10px;
+}
