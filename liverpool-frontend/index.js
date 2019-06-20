@@ -131,7 +131,7 @@ function displayPost(post) {
   
   postButton.addEventListener("click", postDetailsModal)
 }
-
+ 
 // POST DETAILS MODAL
 function postDetailsModal(e) {
   console.log(e.target.id)
@@ -144,9 +144,9 @@ function postDetailsModal(e) {
 //WORKING BUT NEEDS DESIGN/CSS
 function displayPostModal(post) {
   const postModal = document.getElementById("post-modal")
+  postModal.querySelector('#post-details').innerHTML += `<img src=${post.media}>`
   postModal.querySelector('h5').innerText = post.title
   postModal.querySelector('#post-details').innerText = post.content
-  postModal.querySelector('#post-details').innerHTML += `<img src=${post.media}>`
   console.log(postModal)
 }
 

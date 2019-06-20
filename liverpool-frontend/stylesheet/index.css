@@ -1,4 +1,5 @@
 h1 {
+    font-size: 95px;
     color: red;
     text-align: center;
     padding: 10px; 
@@ -19,6 +20,7 @@ h1 {
     border-radius: 10px;
     padding: 10px; 
     margin: 10px;
+    width: 28.3%
 }
 
 #post_content {
@@ -27,6 +29,7 @@ h1 {
     border-radius: 10px;
     padding: 10px; 
     margin: 10px;
+    width: 28.3%
 }
 
 #post_media {
@@ -35,6 +38,7 @@ h1 {
     border-radius: 10px;
     padding: 10px; 
     margin: 10px;
+    width: 28.3%
 }
 
 .posts {
@@ -43,8 +47,10 @@ h1 {
     border: solid;
     border-color: black;
     border-radius: 20px;
-    padding: 10px; 
-    margin: 10px;
+    padding: 20px; 
+    margin: 15px;
+    width: 95%;
+    
 }
 
 #userForm {
@@ -54,7 +60,6 @@ h1 {
     border-color: black;
     border-radius: 20px;
     padding: 5px; 
-    margin: 10px;
     width: 32%;
 }
 
@@ -65,21 +70,27 @@ h1 {
     border-color: black;
     border-radius: 20px;
     padding: 5px; 
-    margin: 10px;
-    width: 82%;
+    /* margin: 10px; */
+    width: 97.7%;
 }
 
-/* #fans_btn {
-    top: 50px;
-    left: 500px;
-} */
+#fans_btn {
+    float: right;
+    margin: 6.45em 11.3em 0 0;
+    width: 250px;
+    height: 50px;
+    border: 3px solid black;
+    padding: 10px;
+    font-size: 18px
+}
 
 #userName {
     border: solid;
     border-color: black;
     border-radius: 10px;
     padding: 5px; 
-    margin: 3px;
+    margin: 8px;
+    width: 68%
 }
 
 .btn-danger {
@@ -120,9 +131,12 @@ h1 {
     margin: 10px;
 }
 
-
-
 .forms {
-    padding: 10px; 
-    margin: 10px;
+    margin: 0 10em 0 10em;
+    padding: 1em; 
+}
+#post-list {
+    margin: 0 10em 0 10em;
+    padding: 0;
+    list-style-type: none;
 }
