@@ -1,6 +1,7 @@
 h1 {
-    font-size: 95px;
+    font-size: 115px;
     color: red;
+    text-shadow: 0 0 black, 1px 10px black, 1px 10px black, 0 1px black;
     text-align: center;
     padding: 10px; 
     margin: 10px;
@@ -76,13 +77,13 @@ h1 {
 
 #fans_btn {
     float: right;
-    margin: 6.45em 11.3em 0 0;
+    margin: 6em 11.3em 0 0;
     width: 250px;
-    height: 50px;
+    height: 67px;
     border: 3px solid black;
     padding: 10px;
     font-size: 18px;
-    font-co
+    
 }
 
 #userName {
@@ -101,12 +102,19 @@ h1 {
 }
 
 #create_user_text {
+    font-size: 30px;
+    color: red;
+    text-shadow: 0 0 black, 1px 3px black, 1px 3px black, 0 1px black;
     border-radius: 10px;
     padding: 5px; 
     margin: 10px;
+
 }
 
 #create_post_text {
+    font-size: 30px;
+    color: red;
+    text-shadow: 0 0 black, 1px 3px black, 1px 3px black, 0 1px black;
     border-radius: 10px;
     padding: 5px; 
     margin: 10px;
