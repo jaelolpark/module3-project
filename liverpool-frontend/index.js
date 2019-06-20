@@ -36,22 +36,28 @@ function fetchPosts() {
 // WORKING
 function createUser(e) {
   e.preventDefault()
-  let user = {name: e.target.name.value}
-  fetch(usersUrl, {
-    method: "POST",
-    headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json"
-  }, 
-    body: JSON.stringify(user)
-  }).then(res => res.json())
-  .then(e.target.reset())
-  .then(res => {
-    console.log("This is my user: ", res)
-    user_id = res.id
-    console.log("This is the user_id: ", user_id)
-    displayUser(res)
-  })
+  console.log(e.target.name.value)
+  if(e.target.name.value === "") {
+    alert('Please enter your name!')
+  } 
+  else {
+    let user = {name: e.target.name.value}
+    fetch(usersUrl, {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    }, 
+      body: JSON.stringify(user)
+    }).then(res => res.json())
+    .then(e.target.reset())
+    .then(res => {
+      console.log("This is my user: ", res)
+      user_id = res.id
+      console.log("This is the user_id: ", user_id)
+      displayUser(res)
+    })
+  }
 }
 
 // WORKING BUT NEED TO LOGIN FIRST
@@ -59,7 +65,7 @@ function createPost(e) {
   e.preventDefault()
   
   if(user_id === null) {
-    alert('You have to be logged in to post!')
+    alert('You must be logged in to post!')
   }
   else {
     let postInput = {
@@ -134,7 +140,6 @@ function displayPost(post) {
 
 // POST DETAILS MODAL
 function postDetailsModal(e) {
-  console.log(e.target.id)
   post_id = e.target.id
     fetch(`http://localhost:3000/posts/${post_id}`)
     .then(resp => resp.json())
@@ -143,16 +148,23 @@ function postDetailsModal(e) {
 
 //WORKING BUT NEEDS DESIGN/CSS
 function displayPostModal(post) {
+  console.log(post)
   const postModal = document.getElementById("post-modal")
   postModal.querySelector('h5').innerText = post.title
-  postModal.querySelector('#post-details').innerText = post.content
-  postModal.querySelector('#post-details').innerHTML += `<img src=${post.media}>`
-  console.log(postModal)
+  postModal.querySelector('#post-content').innerText = post.content
+  postModal.querySelector('#post-media').innerHTML = `<img src=${post.media}>`
+  let postCommentsUl = document.getElementById("comments-ul")
+  postCommentsUl.innerHTML = ""
+  post.comments.forEach(comment=> {
+    let postCommentLi = document.createElement("li")
+    postCommentLi.innerText = comment.text
+    postCommentsUl.append(postCommentLi)
+  })
+  // postModal.querySelector("#post-comments").innerHTML += post.comments.map(comment.text => `<li>${comment.text}</li>`)
 }
 
 // Display Users in a modal when clicked on
 function displayUser(user){
-  console.log(user)
   const modalBody = document.getElementById("userModal")
   modalBody.innerHTML +=
     `<li>${user.name}</li>`   
