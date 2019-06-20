@@ -99,14 +99,14 @@ function displayPost(post) {
   h2.innerText = post.title
 
   const p = document.createElement("p")
-  p.innerText = `"${post.content}"` 
+  p.innerText = `${post.content}` 
 
   const author = document.createElement("p")
   author.className = 'author-tag'
 
   fetch(usersUrl+'/'+post.user_id)
   .then(resp => resp.json())
-  .then(user => author.innerText = `by ${user.name}`)
+  .then(user => author.innerText = `- ${user.name}`)
 
   const postButton = document.createElement("button")
   postButton.id = post.id
@@ -123,6 +123,7 @@ function displayPost(post) {
   const like_span = document.createElement("span")
   like_span.innerText = post.likes.length
   like_btn.append(like_span)
+
   like_btn.addEventListener("click", function (){
     like_span.innerText = parseInt(like_span.innerText) + 1
     fetch(likesUrl, {
@@ -132,8 +133,22 @@ function displayPost(post) {
       body: JSON.stringify({user_id: post.user_id, post_id: post.id})
     })    
   })
-  divPost.append(h2, author, p, postButton, like_btn)
+
+  const deleteBtn = document.createElement("button")
+  deleteBtn.innerText = " x "
+  deleteBtn.addEventListener("click", ()=> {
+    if(post.user_id === user_id) {
+      fetch(postsUrl+"/"+post.id, {
+        method: "DELETE"
+      }).then(res => res.json())
+      .then(divPost.remove())
+      }
+    else {
+      alert('You must be the post author to delete this post!')
+    } 
+  })
   postList.append(divPost)
+  divPost.append(h2, author, p, postButton, like_btn, deleteBtn)
   
   postButton.addEventListener("click", postDetailsModal)
 }
