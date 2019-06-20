@@ -81,22 +81,15 @@ function createPost(e) {
 }
 
 function displayPost(post) {
-  // const postId = post.id
-  let postLikes = 0
-  fetch(likesUrl)
-    .then(res => res.json())
-    .then(likes => likes.forEach(like => {
-      if (post.id === like.post_id) postLikes++
+  const post_id = post.id
+  // let postLikes = 0
+  // fetch(likesUrl)
+  //   .then(res => res.json())
+  //   .then(likes => likes.forEach(like => {
+  //     if (post.id === like.post_id) postLikes++
 
   const postList = document.getElementById("post-list")
-  // postList.innerHTML += 
-  //   `<div id=${post.id} class="posts">
-  //     <h2>${post.title}</h2>
-  //     <p>${post.content}</p>
-  //     <button id="btn-detail" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-  //       Post Details
-  //     </button>
-  //   </div><br><br>`
+
     const divPost = document.createElement("div")
     divPost.id = post.id
     divPost.className = "posts"
@@ -123,35 +116,48 @@ function displayPost(post) {
     postButton.innerText = "Post Details"
 
     const like_btn = document.createElement("button")
-    like_btn.id = post.id
     like_btn.className = 'btn btn-primary'
-    like_btn.innerHTML = `<span>Likes: <span>${postLikes}</span></span>`
+    like_btn.innerText = "Likes: "
 
+    const like_span = document.createElement("span")
+    like_span.innerText = post.likes.length
+    like_btn.append(like_span)
+    like_btn.addEventListener("click", function (){
+      like_span.innerText = parseInt(like_span.innerText) + 1
+      fetch(likesUrl, {
+        method: "POST",
+        headers: {"Accept": "application/json",
+        'Content-Type': 'application/json'},
+        body: JSON.stringify({user_id: post.user_id, post_id: post.id})
+      })
+      
+    })
+    console.log(like_span)
     divPost.append(h2, p, author, postButton, like_btn)
     postList.append(divPost)
     
     postButton.addEventListener("click", postDetailsModal)
-    like_btn.addEventListener("click", postlike)
-  }))
+    // like_btn.addEventListener("click", postlike)
+  // }))
 }
 
 // POST LIKE
-function postlike(e) {
-  console.log(e.target.post_id)
-  let like_span = e.target
-  like_span.innerText = parseInt(like_span.innerText)+1
-console.log(like_span.innerText)
+// function postlike(e) {
+//   console.log(e.target.post_id)
+//   let like_span = e.target
+//   like_span.innerText = parseInt(like_span.innerText)+1
+// console.log(like_span.innerText)
     
-    fetch(likesUrl, {
-      method: 'POST',
-      headers: {'Accept': 'application/json',
-      'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        post_id: postId,
-        user_id: userId
-      })
-    })
-}
+//     fetch(likesUrl, {
+//       method: 'POST',
+//       headers: {'Accept': 'application/json',
+//       'Content-Type': 'application/json'},
+//       body: JSON.stringify({
+//         post_id: postId,
+//         user_id: userId
+//       }).then(console.log(user_id))
+//     })
+// }
 
 // POST DETAILS MODAL
 function postDetailsModal(e) {
