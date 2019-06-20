@@ -136,6 +136,7 @@ function displayPost(post) {
 
   const deleteBtn = document.createElement("button")
   deleteBtn.innerText = " x "
+  deleteBtn.className = "delete-post"
   deleteBtn.addEventListener("click", ()=> {
     if(post.user_id === user_id) {
       fetch(postsUrl+"/"+post.id, {
@@ -167,7 +168,7 @@ function displayPostModal(post) {
   const postModal = document.getElementById("post-modal")
   postModal.querySelector('h5').innerText = post.title
   postModal.querySelector('#post-content').innerText = post.content
-  postModal.querySelector('#post-media').innerHTML = `<img src=${post.media}>`
+  postModal.querySelector('#post-media').innerHTML = `<img id="postImg" src=${post.media}>`
   let postCommentsUl = document.getElementById("comments-ul")
   postCommentsUl.innerHTML = ""
   post.comments.forEach(comment=> {
