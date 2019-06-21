@@ -89,6 +89,7 @@ function createPost(e) {
 
 // DISPLAY POST 
 function displayPost(post) {
+  console.log(post)
   const postList = document.getElementById("post-list")
 
   const divPost = document.createElement("div")

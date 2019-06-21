@@ -36,7 +36,7 @@ p {
 
 #post_form {
     background-color: rgb(185, 181, 181);
-    opacity: 10%;
+    opacity: 0.95;
     border: solid;
     border-color: black;
     border-radius: 20px;
@@ -89,7 +89,7 @@ p {
 
 .posts {
     background-color: rgb(233, 233, 233);
-    opacity: 10%;
+    opacity: 0.95;
     border: solid;
     border-color: black;
     border-radius: 20px;
@@ -109,6 +109,7 @@ p.author-tag {
 }
 
 #userForm {
+    opacity: .95;
     background-color: rgb(185, 181, 181);
     opacity: 10%;
     border: solid;
