@@ -111,7 +111,7 @@ function displayPost(post) {
   const postButton = document.createElement("button")
   postButton.id = post.id
   postButton.type = 'button'
-  postButton.className = "btn btn-danger"
+  postButton.className = "btn btn-success"
   postButton.dataset.toggle = "modal"
   postButton.dataset.target = "#post-modal"
   postButton.innerText = "Post Details"
@@ -135,8 +135,9 @@ function displayPost(post) {
   })
 
   const deleteBtn = document.createElement("button")
-  deleteBtn.innerText = " x "
-  deleteBtn.className = "delete-post"
+  deleteBtn.innerText = "Delete"
+  deleteBtn.id = "deleteBtn"
+  deleteBtn.className = "btn btn-danger"
   deleteBtn.addEventListener("click", ()=> {
     if(post.user_id === user_id) {
       fetch(postsUrl+"/"+post.id, {

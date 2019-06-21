@@ -34,13 +34,28 @@ p {
     font-size: .8em;
 }
 
+#post_form {
+    background-color: rgb(185, 181, 181);
+    opacity: 10%;
+    border: solid;
+    border-color: black;
+    border-radius: 20px;
+    padding: 5px; 
+    /* margin: 10px; */
+    width: 62%;
+    height: 55%;
+    margin-left: 35.5%;
+}
+
 #post_title {
     border: solid;
     border-color: black;
     border-radius: 10px;
     padding: 10px; 
     margin: 10px;
-    width: 28.3%
+    width: 95.5%;
+    line-height: 30px;
+    margin-left: 15px;
 }
 
 #post_content {
@@ -49,7 +64,8 @@ p {
     border-radius: 10px;
     padding: 10px; 
     margin: 10px;
-    width: 28.3%
+    width: 95.5%;
+    margin-left: 15px;
 }
 
 #post_media {
@@ -58,7 +74,17 @@ p {
     border-radius: 10px;
     padding: 10px; 
     margin: 10px;
-    width: 28.3%
+    width: 95.5%;
+    margin-left: 15px;
+}
+
+#post_submit_button {
+    border-radius: 10px;
+    padding: 5px; 
+    margin: -23.8em 1em 0 0;
+    width: 10em;
+    /* display: inline; */
+    float: right;
 }
 
 .posts {
@@ -90,29 +116,22 @@ p.author-tag {
     border-radius: 20px;
     padding: 5px; 
     width: 32%;
-    height: 20%;
-}
-
-#post_form {
-    background-color: rgb(185, 181, 181);
-    opacity: 10%;
-    border: solid;
-    border-color: black;
-    border-radius: 20px;
-    padding: 5px; 
-    /* margin: 10px; */
-    width: 97.7%;
+    height: 30%;
+    float: left;
 }
 
 #fans_btn {
-    float: right;
-    margin: 2.35em 11.3em 0 0;
-    width: 250px;
-    height: 67px;
+    /* float: left; */
+    /* margin: 0 0em 0em 0; */
+    width: 330px;
+    height: 85px;
     border: 3px solid black;
     padding: 10px;
-    font-size: 18px;
-    
+    font-size: 30px;
+    position:absolute;
+    transition: .5s ease;
+    left: 185px;
+    top: 735px;
 }
 
 #userName {
@@ -121,13 +140,13 @@ p.author-tag {
     border-radius: 10px;
     padding: 5px; 
     margin: 8px;
-    width: 68%
+    width: 94.5%;
+    height: 25.6%;
 }
 
-.btn-danger {
-    border-radius: 10px;
-    padding: 5px; 
-    margin: 10px;
+#deleteBtn {
+    display: inline;
+    margin-left: 44em;
 }
 
 #create_user_text {
@@ -149,8 +168,13 @@ p.author-tag {
     margin: 10px;
 }
 
+.btn-success {
+    display: inline;
+    margin-left: 20px;
+}
+
 .btn-primary {
-    border-radius: 10px;
+    display: inline;
     padding: 5px; 
     margin: 10px;
 }
@@ -161,12 +185,10 @@ p.author-tag {
     border-radius: 10px;
     padding: 5px; 
     margin: 10px;
-}
-
-#post_submit_button {
-    border-radius: 10px;
-    padding: 5px; 
-    margin: 10px;
+    position:absolute;
+    transition: .5s ease;
+    left: 433px;
+    top: 580px;
 }
 
 .forms {
